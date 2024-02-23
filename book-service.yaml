@@ -1,0 +1,72 @@
+# application.yml
+server:
+  port: 8787
+spring:
+  application:
+    name: book-service
+  cloud:
+    consul:
+      host: consul
+      port: 8500
+      discovery:
+        enabled: true  # Enable service discovery
+        service-name: book-service  # Optional: Custom service name
+        register: true
+        instanceId: ${spring.application.name}:${spring.cloud.client.hostname}
+  #        :${server.port}
+  servlet:
+    multipart:
+      max-file-size: 2000MB
+      max-request-size: 2000MB
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:postgresql://postgres_container_book:5432/books
+    username: postgres
+    password: postgres
+    driver: org.postgresql.Driver
+  data:
+    mongodb:
+      host: mongo-1
+      username: mongodb
+      password: admin
+      database: image_books
+      port: 27017
+      profiles:
+        active: dev
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        hbm2ddl.auto: update
+        cache:
+          caches:
+            -name: booksCache
+          use_second_level_cache: true
+          region:
+            factory_class: com.hazelcast.hibernate.HazelcastCacheRegionFactory
+# liquibase.properties
+liquibase:
+  change-log: classpath:/db/changelog/db.changelog-master.yaml
+  contexts: development, production
+  default-schema: book
+# logging
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+logging:
+  level:
+      org.springframework.data.mongodb.core: debug
+      hibernate: debug
+      springframework:
+        cache: debug
+      org.springframework.cloud.consul: DEBUG
+
+
+
+
+
+
+
