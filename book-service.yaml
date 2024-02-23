@@ -6,7 +6,7 @@ spring:
     name: book-service
   cloud:
     consul:
-      host: consul
+      host: localhost
       port: 8500
       discovery:
         enabled: true  # Enable service discovery
@@ -21,17 +21,15 @@ spring:
   main:
     allow-bean-definition-overriding: true
   datasource:
-    url: jdbc:postgresql://postgres_container_book:5432/books
+    url: jdbc:postgresql://localhost:5432/books
     username: postgres
     password: postgres
     driver: org.postgresql.Driver
   data:
     mongodb:
-      host: mongo-1
+      uri: mongodb://localhost:27017/books
       username: mongodb
-      password: admin
-      database: image_books
-      port: 27017
+      password: mongodb
       profiles:
         active: dev
   jpa:
@@ -63,7 +61,6 @@ logging:
       springframework:
         cache: debug
       org.springframework.cloud.consul: DEBUG
-
 
 
 
