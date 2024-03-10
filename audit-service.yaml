@@ -16,16 +16,9 @@ spring:
   #        :${server.port}
   data:
     mongodb:
-      # uri: mongodb://localhost:27017/books_audit
-      # username: mongodb
-      # password: mongodb
-      # profiles:
-      #   active: dev
-      host: mongo-1
+      uri: mongodb://localhost:27017/books_audit
       username: mongodb
-      password: admin
-      database: image_books
-      port: 27017
+      password: mongodb
       profiles:
         active: dev
   # data:
