@@ -25,11 +25,20 @@ spring:
     username: postgres
     password: postgres
     driver: org.postgresql.Driver
+  # data:
+  #   mongodb:
+  #     uri: mongodb://localhost:27017/books
+  #     username: mongodb
+  #     password: mongodb
+  #     profiles:
+  #       active: dev
   data:
     mongodb:
-      uri: mongodb://localhost:27017/books
+      host: mongo-1
       username: mongodb
-      password: mongodb
+      password: admin
+      database: image_books
+      port: 27017
       profiles:
         active: dev
   jpa:
