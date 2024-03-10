@@ -25,13 +25,13 @@ spring:
     username: postgres
     password: postgres
     driver: org.postgresql.Driver
-  # data:
-  #   mongodb:
-  #     uri: mongodb://localhost:27017/books
-  #     username: mongodb
-  #     password: mongodb
-  #     profiles:
-  #       active: dev
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/books
+      username: mongodb
+      password: mongodb
+      profiles:
+        active: dev
   jpa:
     properties:
       hibernate:
@@ -44,9 +44,9 @@ spring:
           region:
             factory_class: com.hazelcast.hibernate.HazelcastCacheRegionFactory
 #custom
-custom:
-  mongodb:
-    uri: mongodb://localhost:27017/books
+# custom:
+#   mongodb:
+#     uri: mongodb://localhost:27017/books
 # liquibase.properties
 liquibase:
   change-log: classpath:/db/changelog/db.changelog-master.yaml
