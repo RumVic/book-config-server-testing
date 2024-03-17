@@ -52,6 +52,13 @@ liquibase:
   change-log: classpath:/db/changelog/db.changelog-master.yaml
   contexts: development, production
   default-schema: book
+#kafka
+kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
 # logging
 management:
   endpoints:
